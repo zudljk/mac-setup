@@ -1,0 +1,4 @@
+---
+# tasks file for cleanup
+- name: cleanup
+  file: path={{downloads}} state=absent
