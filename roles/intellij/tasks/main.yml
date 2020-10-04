@@ -1,7 +1,7 @@
 ---
 - name: Create IntelliJ plugin directory
   file: 
-    path: "{{intellij_plugin_dir}"
+    path: "{{intellij_plugin_dir}}"
     state: directory
 - name: Download plugins
   unarchive:
