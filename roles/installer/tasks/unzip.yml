@@ -4,6 +4,7 @@
     src: "{{downloads}}/{{app_name}}.zip"
     dest: "{{downloads}}/"
     copy: no
+    remote_src: yes
 - name: Find unzipped files
   find:
     paths: "{{downloads}}/"

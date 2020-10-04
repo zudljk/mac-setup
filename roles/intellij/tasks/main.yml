@@ -1,0 +1,38 @@
+---
+- name: Create IntelliJ plugin directory
+  file: 
+    path: "{{intellij_plugin_dir}"
+    state: directory
+- name: Download plugins
+  unarchive:
+    src: "https://plugins.jetbrains.com/plugin/download?rel=true&updateId={{item}}"
+    dest: "{{intellij_plugin_dir}}"
+    copy: no
+    remote_src: yes
+  loop:
+    - 85987
+    - 92719
+    - 94332
+    - 94391
+    - 94423
+    - 95021
+    - 95080
+    - 95175
+    - 95239
+    - 95704
+    - 95757
+    - 95909
+    - 96191
+    - 96285
+    - 96647
+    - 96740
+    - 96781
+    - 97067
+    - 97305
+    - 97571
+    - 97592
+    - 97779
+    - 98464
+    - 98469
+    - 98471
+    - 98554

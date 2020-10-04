@@ -1,3 +1,4 @@
 app_name: IntelliJ IDEA
 install_method: brew-cask
 brew_cask_name: intellij-idea-ce
+intellij_plugin_dir: "{{ansible_env.HOME}}/Library/Application Support/JetBrains/IdeaIC2020.2/plugins"
