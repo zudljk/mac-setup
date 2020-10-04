@@ -1,5 +1,14 @@
 ---
 # tasks file for roles
+- name: Ensure homebrew is installed
+  shell: '/usr/bin/ruby -e “$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
+  args:
+    creates: /usr/local/bin/brew
+- name: Ensure xcode-commandline installed
+  block:
+    shell: xcode-select -p
+  rescue:
+    shell: xcode-select --install
 - name: Create Ansible downloads directory
   file: 
     path: "{{downloads}}"

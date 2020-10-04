@@ -6,4 +6,4 @@ xcode-select --install
 
 brew install git
 brew install python3
-pip install ansible
+pip3 install ansible
