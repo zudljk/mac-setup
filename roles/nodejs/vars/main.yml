@@ -1,0 +1,3 @@
+app_name: node
+brew_formula_name: node
+install_method: brew

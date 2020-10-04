@@ -1,0 +1,3 @@
+app_name: IntelliJ IDEA
+install_method: brew-cask
+brew_cask_name: intellij-idea-ce

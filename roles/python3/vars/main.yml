@@ -1,0 +1,3 @@
+app_name: python3
+brew_formula_name: python3
+install_method: brew

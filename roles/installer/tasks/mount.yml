@@ -1,6 +1,16 @@
 ---
 - name: Mount {{app_name}} image
-  command: hdiutil attach "{{app_name}}.dmg" chdir={{downloads}} -mountpoint "{{mount_path}}/{{app_name}}"
-- name: Changing installer source to {{mount_path}}/{{app_name}}
-  set_fact: installer_source={{mount_path}}/{{app_name}}
+  command: hdiutil attach "{{installer}}" chdir={{downloads}} -mountpoint "{{mount_path}}/{{app_name}}"
+- name: Find installer in image
+  find:
+    paths: "{{mount_path}}/{{app_name}}"
+    patterns: 
+      - "*.app"
+      - "*.pkg"
+    use_regex: no
+  register: fileslist
+- name:
+  set_fact: installer={{fileslist[0].path}}
+- name:
+  set_fact: installer_type={{installer | splitext | last}}
   

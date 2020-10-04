@@ -1,6 +1,14 @@
 ---
 - name: Unzipping {{app_name}}.zip
-  unarchive: src={{downloads}}/{{app_name}}.zip dest={{downloads}}/ copy=no
-  notify:
-    - cleanup
-  
+  unarchive: 
+    src: "{{downloads}}/{{app_name}}.zip"
+    dest: "{{downloads}}/"
+    copy: no
+- name: Find unzipped files
+  find:
+    paths: "{{downloads}}/"
+  register: fileslist
+- name:
+  set_fact: installer={{fileslist[0].path}}
+- name:
+  set_fact: installer_type={{installer | splitext | last}}

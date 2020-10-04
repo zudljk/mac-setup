@@ -1,0 +1,3 @@
+app_name: PyCharm
+brew_cask_name: pycharm-ce
+install_method: brew-cask

@@ -1,5 +1,0 @@
----
-- hosts: local
-  name: Initialization
-  roles:
-    - setup

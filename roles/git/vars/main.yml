@@ -1,0 +1,3 @@
+app_name: git
+brew_formula_name: git
+install_method: brew

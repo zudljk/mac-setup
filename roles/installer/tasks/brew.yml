@@ -1,0 +1,10 @@
+---
+- name: Install {{brew_formula_name}} with brew
+  block:
+    - name: Upgrade {{brew_formula_name}} with brew
+      command: /usr/local/bin/brew upgrade {{brew_formula_name}}
+      become: false
+  rescue:
+    - name: "{{brew_formula_name}} is not yet installed, installing it"
+      command: /usr/local/bin/brew install {{brew_formula_name}}
+      become: false

@@ -1,0 +1,4 @@
+---
+- name: Install {{app_name}} using pip
+  pip:
+      name: {{pip_package_name}}

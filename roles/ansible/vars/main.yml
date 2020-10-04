@@ -1,0 +1,3 @@
+app_name: ansible
+pip_package_name: ansible
+install_method: pip

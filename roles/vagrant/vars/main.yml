@@ -1,0 +1,3 @@
+app_name: vagrant
+brew_formula_name: vagrant
+install_method: brew

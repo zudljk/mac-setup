@@ -1,4 +1,8 @@
 ---
 # tasks file for cleanup
 - name: cleanup
-  file: path={{downloads}} state=absent
+  block:
+    - name: Unmount {{app_name}} image
+      command: hdiutil detach "{{mount_path}}/{{app_name}}"
+    - file: path={{downloads}} state=absent
+    
