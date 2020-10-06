@@ -2,15 +2,17 @@
 - hosts: local
   become: yes
   roles:
-#    - git
-#    - python3
-#    - ansible
+    - git
+    - python3
+    - ansible
     - vagrant
-#    - firefox
-#    - google_chrome
-#    - nodejs
-#    - visual_studio_code
-#    - slack
-#    - intellij
-#    - pycharm
-#    - office365
+    - firefox
+    - google_chrome
+    - nodejs
+    - visual_studio_code
+    - slack
+    - intellij
+    - pycharm
+    - office365
+    - teams
+    - kubectl

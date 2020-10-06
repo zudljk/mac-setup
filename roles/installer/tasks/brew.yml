@@ -1,10 +1,6 @@
 #---
-- shell: |
-     whoami
-  become: no
-  register: homebrew_user
 - name: Install {{brew_formula_name}} with brew
-  shell: |
-     /usr/local/bin/brew install --force {{brew_formula_name}}
-  become: yes
-  become_user: "{{homebrew_user}}"
+  homebrew:
+    name: "{{brew_formula_name}}"
+  become: no
+  ignore_errors: yes 

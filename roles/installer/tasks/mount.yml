@@ -3,14 +3,13 @@
   command: hdiutil attach "{{installer}}" chdir={{downloads}} -mountpoint "{{mount_path}}/{{app_name}}"
 - name: Find installer in image
   find:
-    paths: "{{mount_path}}/{{app_name}}"
-    patterns: 
-      - "*.app"
-      - "*.pkg"
+    paths: "{{mount_path}}/{{app_name}}/"
+    patterns: '*.app,*.pkg'
+    file_type: any
     use_regex: no
   register: fileslist
 - name:
-  set_fact: installer={{fileslist[0].path}}
+  set_fact: installer={{fileslist.files[0].path}}
 - name:
   set_fact: installer_type={{installer | splitext | last}}
   

@@ -1,0 +1,3 @@
+app_name: kubernetes-cli
+brew_formula_name: kubernetes-cli
+install_method: brew

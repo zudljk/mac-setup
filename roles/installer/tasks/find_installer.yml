@@ -3,6 +3,6 @@
     paths: "{{downloads}}/"
   register: fileslist
 - name:
-  set_fact: installer={{fileslist[0].path}}
+  set_fact: installer={{fileslist.files[0].path}}
 - name:
   set_fact: installer_type={{installer | splitext | last}}

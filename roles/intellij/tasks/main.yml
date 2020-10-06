@@ -1,13 +1,19 @@
 ---
+- name: Get current user
+  command: whoami
+  register: userdata
+  become: no
 - name: Create IntelliJ plugin directory
   file: 
-    path: "{{intellij_plugin_dir}}"
+    path: "/Users/{{userdata.stdout}}/{{intellij_plugin_dir}}"
     state: directory
+  become: no
 - name: Download plugins
   unarchive:
     src: "https://plugins.jetbrains.com/plugin/download?rel=true&updateId={{item}}"
-    dest: "{{intellij_plugin_dir}}"
+    dest: "/Users/{{userdata.stdout}}/{{intellij_plugin_dir}}"
     remote_src: yes
+  become: no
   loop:
     - 85987
     - 92719

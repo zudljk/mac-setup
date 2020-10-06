@@ -1,4 +1,8 @@
 ---
+- name: Create Ansible downloads directory
+  file: 
+    path: "{{downloads}}"
+    state: directory
 - name: Download {{app_name}} to {{downloads}}
   get_url: 
     url: "{{app_url}}"
@@ -7,18 +11,19 @@
   when: download_file_type == "zip"
 - include: find_installer.yml
 - include: mount.yml
-  when: installer_type == "dmg"
+  when: installer_type == ".dmg"
 - name: Install package {{app_name}}
   shell: installer -pkg "{{installer}}" -target /
-  when: installer_type == "pkg"
-  notify:
-    - cleanup
-- name: Remove existing app if present
-  file: 
-    path: /Applications/{{installer | basename}}.app 
-    state: absent
+  when: installer_type == ".pkg"
 - name: Copy {{app_name}} to Applications directory
-  shell: cp -R "{{installer}}" /Applications
-  when: installer_type == "app"
-  notify:
-    - cleanup
+  copy:
+    remote_src: yes
+    src: "{{installer}}"
+    dest: /Applications
+    force: no
+  when: installer_type == ".app"
+- name: Clear Ansible downloads directory
+  block:
+    - name: Unmount {{app_name}} image
+      command: hdiutil detach "{{mount_path}}/{{app_name}}"
+    - file: path={{downloads}} state=absent

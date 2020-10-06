@@ -1,10 +1,21 @@
 ---
-- name: Install {{brew_formula_name}} with brew
+- command: whoami
+  become: no
+  register: homebrew_user
+- name: Install {{brew_cask_name}} with brew-cask
   block:
-    - name: Upgrade {{brew_formula_name}} with brew
-      command: /usr/local/bin/brew cask upgrade {{brew_cask_name}}
-      become: false
-  rescue:
-    - name: "{{brew_formula_name}} is not yet installed, installing it"
-      command: /usr/local/bin/brew cask install {{brew_cask_name}}
-      become: false
+    - name: allow passwordless sudo
+      lineinfile:
+        path: /etc/sudoers.d/tmp-ansible
+        line: '{{ homebrew_user.stdout }} ALL=(ALL) NOPASSWD: ALL'
+        create: yes
+      become: yes
+    - name: Upgrade {{brew_cask_name}} with brew-cask
+      homebrew_cask: name={{brew_cask_name}}
+      become: no
+  always:
+    - name: disable passwordless sudo
+      file:
+        path: /etc/sudoers/tmp-ansible
+        state: absent
+      become: yes
