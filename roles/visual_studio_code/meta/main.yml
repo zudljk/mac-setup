@@ -1,2 +1,4 @@
 dependencies:
   - role: installer
+
+allow_duplicates: yes

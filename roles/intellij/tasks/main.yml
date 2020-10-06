@@ -7,7 +7,6 @@
   unarchive:
     src: "https://plugins.jetbrains.com/plugin/download?rel=true&updateId={{item}}"
     dest: "{{intellij_plugin_dir}}"
-    copy: no
     remote_src: yes
   loop:
     - 85987

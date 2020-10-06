@@ -5,11 +5,3 @@
     dest: "{{downloads}}/"
     copy: no
     remote_src: yes
-- name: Find unzipped files
-  find:
-    paths: "{{downloads}}/"
-  register: fileslist
-- name:
-  set_fact: installer={{fileslist[0].path}}
-- name:
-  set_fact: installer_type={{installer | splitext | last}}

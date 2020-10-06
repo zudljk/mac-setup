@@ -5,6 +5,7 @@
     dest: "{{downloads}}/{{app_name}}.{{download_file_type}}"
 - include: unzip.yml
   when: download_file_type == "zip"
+- include: find_installer.yml
 - include: mount.yml
   when: installer_type == "dmg"
 - name: Install package {{app_name}}

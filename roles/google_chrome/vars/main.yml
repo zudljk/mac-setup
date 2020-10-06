@@ -1,3 +1,3 @@
 app_name: Google Chrome
 brew_cask_name: google-chrome
-install_method: brew-cask
+install_method: brew
